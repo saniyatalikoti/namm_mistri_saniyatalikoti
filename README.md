@@ -1,357 +1,541 @@
 <div align="center">
 
-<img src="app/src/main/res/drawable/logo.jpeg" alt="NammaMistri Logo" width="120" height="120" style="border-radius: 24px;" />
+<h1>🏗️ NammaMistri</h1>
 
-# NammaMistri
+<p><strong>Construction Work Made Simple</strong></p>
 
-### *Your Trusted Local Labour Marketplace*
+<p><em>NammaMistri is a modern Android application built with Kotlin and Jetpack Compose that helps contractors and site managers track construction projects, manage workers, monitor expenses, and calculate material costs — all in one place.</em></p>
 
-**Connecting skilled daily-wage workers with hirers — instantly, transparently, and locally.**
+<br/>
 
-[![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://android.com)
-[![Kotlin](https://img.shields.io/badge/Language-Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org)
-[![Jetpack Compose](https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
-[![Firebase](https://img.shields.io/badge/Backend-Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
-[![Min SDK](https://img.shields.io/badge/Min%20SDK-24-blue?style=for-the-badge)](https://apilevels.com)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+<img src="https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" />
+<img src="https://img.shields.io/badge/Language-Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" />
+<img src="https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white" />
+<img src="https://img.shields.io/badge/Storage-Room%20DB-FF6F00?style=for-the-badge&logo=sqlite&logoColor=white" />
+<img src="https://img.shields.io/badge/Status-Active-00C853?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Min%20SDK-24-blue?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Bilingual-EN%20%7C%20KN-orange?style=for-the-badge" />
 
 </div>
 
 ---
 
-## 📖 About
+## 📋 Table of Contents
 
-**NammaMistri** is a dual-role Android application that bridges the gap between **skilled daily-wage workers** (carpenters, electricians, plumbers, painters, and more) and **hirers** (homeowners, contractors, and businesses) in local communities across Karnataka.
+- [Overview](#-overview)
+- [Features](#-features)
+- [Screenshots](#-screenshots)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Prerequisites](#-prerequisites)
+- [Dependencies](#-dependencies)
+- [Installation & Setup](#️-installation--setup)
+- [Database Schema](#️-database-schema)
+- [Future Enhancements](#-future-enhancements)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Author](#-author)
 
-Workers can list themselves with their skills, daily rate, and availability. Hirers can browse, filter, and directly contact workers or send hire requests — all in real time. Built entirely in **Kotlin + Jetpack Compose** with **Firebase** as the backend, NammaMistri delivers a smooth, native experience with no intermediary commissions.
+---
 
-> *"Namma" (ನಮ್ಮ) means "Our" in Kannada — this is your community marketplace.*
+## 📱 Overview
+
+**NammaMistri** (meaning *"Our Craftsman"* in Kannada) is an offline-first construction site management app built for contractors, site supervisors, and homeowners managing building projects in Karnataka and beyond.
+
+It centralises everything a site manager needs day-to-day:
+
+- **Projects** — create and track multiple construction projects with day-based progress
+- **Workers** — log wage, advance, and days worked; auto-calculate net labour cost per worker
+- **Materials** — calculate bricks, cement bags, and sand loads needed for any wall with live cost estimation
+- **Expenses** — record and categorise all site expenditures
+- **Photos** — attach progress photos directly to each project
+- **Summary** — single-screen financial overview with progress bar, labour cost, total expenses, and final total
+
+The app runs fully **offline using Room (SQLite)** — no sign-in required, no internet needed, data stays on your device. It also supports **Kannada language** alongside English for local usability.
 
 ---
 
 ## ✨ Features
 
-### 👷 Worker Side
-- Create and manage a **professional worker profile** with name, skill, location, daily charge, phone, and WhatsApp number
-- Add **multiple skills** with individual daily rates
-- Toggle **real-time availability** (Available / Busy / Offline)
-- View and respond to **incoming hire requests** from hirers
-- **In-app chat** with hirers
-- View **saved/favourited** profiles
+### 📁 Project Management
+- Create construction projects with a name and total day estimate
+- Search across all your projects instantly
+- Open, edit, or delete any project
+- Visual **progress bar** showing completed vs remaining days
+- Per-project tabs: Materials, Workers, Expenses, Photos, Summary
 
-### 🏗️ Hirer Side
-- Browse a **live directory of available workers** with filter by skill and location
-- View detailed **worker profiles** with availability badge and contact info
-- Send **hire requests** directly to workers
-- Track **request status** (Pending / Accepted / Declined)
-- **In-app chat** with workers
-- Save favourite workers for quick access
+### 👷 Worker Tracking
+- Add workers per project with daily wage and advance paid
+- Log **days worked** and auto-calculate net labour cost (wage × days − advance)
+- View running totals of labour cost across all workers in a project
 
-### 🔐 Auth & Onboarding
-- **Role selection** on first launch — choose Worker or Hirer
-- **Email & Password** authentication via Firebase Auth
-- Persistent login — stays signed in across sessions
+### 🧱 Material Calculator
+- Input wall dimensions (length, height, thickness in inches)
+- Set rates for bricks, cement bags, and sand per load
+- Instantly calculates **wall volume, bricks required, cement bags, sand loads, and total material cost**
+- Eliminates manual estimation errors on site
 
-### 💬 Real-time Chat
-- One-to-one messaging between workers and hirers
-- **Chat list screen** showing all active conversations
-- Messages stored securely in Firestore
+### 💸 Expense Tracker
+- Add categorised expenses with title and amount
+- Scrollable list of all recorded expenses per project
+- Feeds directly into the project Summary
 
-### 🎨 UI / UX
-- Premium **luxury light theme** — bright, clean, and professional
-- **Glassmorphism cards** with soft shadows and rounded corners
-- **InitialAvatar** — auto-generated coloured avatar from user's name (no broken images)
-- Fully **scroll-aware layouts** — submit button always stays above the keyboard
-- Smooth **animated transitions** between screens
-- Material 3 design system throughout
+### 📸 Photo Log
+- Attach site progress photos to each project
+- Pick photos from device gallery using the system photo picker
+- "No photos yet" placeholder state when empty
+
+### 📊 Project Summary
+- Project metadata: creation date, total days, progress percentage
+- Live financial totals: workers, labour cost, total expenses, **final total**
+- Update completed days directly from the Summary tab
+- All figures recalculate in real time on save
+
+### 🌐 Bilingual Support
+- Toggle between **English** and **Kannada** from any screen via the Language button in the header
+- Localised UI strings for all major labels and actions
 
 ---
 
-## 🏗️ Tech Stack
+## 📸 Screenshots
+
+<div align="center">
+
+<table>
+  <tr>
+    <td align="center"><b>Projects Dashboard</b></td>
+    <td align="center"><b>Worker Management</b></td>
+    <td align="center"><b>Material Calculator</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/01_projects_dashboard.png" width="220"/></td>
+    <td><img src="screenshots/02_worker_management.png" width="220"/></td>
+    <td><img src="screenshots/03_material_calculator.png" width="220"/></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Expense Tracker</b></td>
+    <td align="center"><b>Photo Log</b></td>
+    <td align="center"><b>Project Summary</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/04_expense_tracker.png" width="220"/></td>
+    <td><img src="screenshots/05_photo_log.png" width="220"/></td>
+    <td><img src="screenshots/06_project_summary.png" width="220"/></td>
+  </tr>
+</table>
+
+</div>
+
+> **To add screenshots to your repo:**
+> 1. Create a `screenshots/` folder at the root of the repository
+> 2. Save the 6 app screenshots with the filenames used above
+> 3. Push to GitHub — the images will appear here automatically
+
+---
+
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |---|---|
 | Language | Kotlin |
-| UI Framework | Jetpack Compose + Material 3 |
-| Architecture | Single-Activity + Composable screens |
-| Authentication | Firebase Auth (Email/Password) |
-| Database | Firebase Firestore |
-| File Storage | Firebase Storage |
-| Image Loading | Coil 2.6 (`AsyncImage`) |
-| Icons | Material Icons Extended |
+| UI Toolkit | Jetpack Compose (Material 3) |
+| Local Storage | Room (SQLite) |
+| Architecture | MVVM + Repository Pattern |
+| Async / Concurrency | Kotlin Coroutines + Flow |
+| Image Picker | Android Photo Picker API |
+| Navigation | Jetpack Navigation Compose |
+| Localisation | Android String Resources (EN + KN) |
 | Build System | Gradle (Kotlin DSL) |
-| Min Android | API 24 (Android 7.0 Nougat) |
-| Target Android | API 36 |
+| IDE | Android Studio Hedgehog+ |
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```
-app/src/main/
-├── java/com/karthik/nammakelsa/
-│   │
-│   ├── 🔑  Auth & Entry
-│   │   ├── RoleSelectionActivity.kt   # Launch screen — pick Worker or Hirer
-│   │   └── MainActivity.kt            # Login / Register screen
-│   │
-│   ├── 🏠  Home & Navigation
-│   │   ├── HomeActivity.kt            # Root activity with bottom nav
-│   │   ├── MainScreen.kt              # Nav host — routes to role-specific tabs
-│   │   └── BottomNav.kt               # Bottom navigation bar definitions
-│   │
-│   ├── 👷  Worker Screens
-│   │   ├── WorkerHomeScreen.kt        # Worker dashboard & stats
-│   │   ├── WorkerProfileScreen.kt     # Worker's own profile view
-│   │   ├── WorkerRequestsScreen.kt    # Incoming hire requests
-│   │   └── WorkerListScreen.kt        # (Hirer-facing) browsable worker directory
-│   │
-│   ├── 🏗️  Hirer Screens
-│   │   ├── HirerHomeScreen.kt         # Browse & filter workers
-│   │   ├── HirerProfileScreen.kt      # Hirer's own profile view
-│   │   ├── HirerRequestsScreen.kt     # Sent hire requests & status
-│   │   └── HirerDetailActivity.kt     # Hirer detail viewed by worker
-│   │
-│   ├── 📋  Shared Screens
-│   │   ├── WorkerDetailActivity.kt    # Full worker profile (viewed by hirer)
-│   │   ├── EditProfileScreen.kt       # Edit profile (role-aware)
-│   │   ├── ProfileActivity.kt         # Profile activity shell
-│   │   ├── AddSkillActivity.kt        # Add / manage skills
-│   │   ├── SavedWorkersScreen.kt      # Saved / favourite workers
-│   │   └── ErrorStateScreen.kt        # Generic error + retry UI
-│   │
-│   ├── 💬  Chat
-│   │   ├── ChatActivity.kt            # Chat activity shell
-│   │   ├── ChatListScreen.kt          # All conversations list
-│   │   └── ChatScreen.kt              # One-to-one messaging UI
-│   │
-│   ├── 🎨  UI Components
-│   │   ├── GlassComponents.kt         # GlassCard, GlassButton, screenBgBrush
-│   │   └── InitialAvatar.kt           # Auto-coloured initial avatar
-│   │
-│   ├── 📦  Data Models
-│   │   ├── Worker.kt                  # Worker data model (Firestore mapping)
-│   │   ├── Request.kt                 # Hire request model
-│   │   ├── Message.kt                 # Chat message model
-│   │   ├── ChatUser.kt                # Chat participant model
-│   │   ├── Review.kt                  # Review/rating model
-│   │   └── Favorite.kt                # Saved worker model
-│   │
-│   └── 🎨  Theme
-│       ├── Color.kt                   # Full luxury colour palette
-│       ├── Theme.kt                   # Light/dark theme config
-│       └── Type.kt                    # Typography scale
+NammaMistri/
 │
-└── res/
-    ├── drawable/
-    │   └── logo.jpeg                  # App logo
-    ├── values/
-    │   ├── strings.xml
-    │   ├── colors.xml
-    │   └── themes.xml
-    └── AndroidManifest.xml
+├── app/
+│   ├── src/
+│   │   └── main/
+│   │       ├── java/com/saniya/nammamistri/
+│   │       │   │
+│   │       │   ├── MainActivity.kt                   # App entry point, NavHost setup
+│   │       │   │
+│   │       │   ├── ui/
+│   │       │   │   ├── theme/
+│   │       │   │   │   ├── Color.kt
+│   │       │   │   │   ├── Theme.kt
+│   │       │   │   │   └── Type.kt
+│   │       │   │   │
+│   │       │   │   ├── project/                      # Project screens
+│   │       │   │   │   ├── ProjectListScreen.kt      # Dashboard — add + search + list
+│   │       │   │   │   ├── ProjectDetailScreen.kt    # Tabs: Materials, Workers, Expenses…
+│   │       │   │   │   └── ProjectViewModel.kt
+│   │       │   │   │
+│   │       │   │   ├── worker/                       # Worker tracking screens
+│   │       │   │   │   ├── WorkerScreen.kt           # Add worker, list, days worked
+│   │       │   │   │   └── WorkerViewModel.kt
+│   │       │   │   │
+│   │       │   │   ├── material/                     # Material calculator screen
+│   │       │   │   │   ├── MaterialScreen.kt         # Inputs + live calculation summary
+│   │       │   │   │   └── MaterialViewModel.kt
+│   │       │   │   │
+│   │       │   │   ├── expense/                      # Expense tracker screen
+│   │       │   │   │   ├── ExpenseScreen.kt          # Add + list expenses
+│   │       │   │   │   └── ExpenseViewModel.kt
+│   │       │   │   │
+│   │       │   │   ├── photo/                        # Photo log screen
+│   │       │   │   │   ├── PhotoScreen.kt            # Pick photo + gallery view
+│   │       │   │   │   └── PhotoViewModel.kt
+│   │       │   │   │
+│   │       │   │   └── summary/                      # Project summary screen
+│   │       │   │       ├── SummaryScreen.kt          # Progress + financials + update days
+│   │       │   │       └── SummaryViewModel.kt
+│   │       │   │
+│   │       │   ├── data/
+│   │       │   │   ├── model/                        # Room entity / data classes
+│   │       │   │   │   ├── Project.kt
+│   │       │   │   │   ├── Worker.kt
+│   │       │   │   │   ├── Material.kt
+│   │       │   │   │   ├── Expense.kt
+│   │       │   │   │   └── Photo.kt
+│   │       │   │   │
+│   │       │   │   ├── dao/                          # Room DAO interfaces
+│   │       │   │   │   ├── ProjectDao.kt
+│   │       │   │   │   ├── WorkerDao.kt
+│   │       │   │   │   ├── MaterialDao.kt
+│   │       │   │   │   ├── ExpenseDao.kt
+│   │       │   │   │   └── PhotoDao.kt
+│   │       │   │   │
+│   │       │   │   ├── database/
+│   │       │   │   │   └── AppDatabase.kt            # Room database singleton
+│   │       │   │   │
+│   │       │   │   └── repository/                   # Data access abstraction
+│   │       │   │       ├── ProjectRepository.kt
+│   │       │   │       ├── WorkerRepository.kt
+│   │       │   │       ├── MaterialRepository.kt
+│   │       │   │       ├── ExpenseRepository.kt
+│   │       │   │       └── PhotoRepository.kt
+│   │       │   │
+│   │       │   └── utils/                            # Helpers & constants
+│   │       │       ├── Constants.kt
+│   │       │       ├── CurrencyFormatter.kt
+│   │       │       └── NavRoutes.kt
+│   │       │
+│   │       └── res/
+│   │           ├── drawable/
+│   │           ├── mipmap/
+│   │           └── values/
+│   │               ├── strings.xml                   # English strings
+│   │               └── values-kn/
+│   │                   └── strings.xml               # Kannada strings
+│   │
+│   └── build.gradle.kts
+│
+├── gradle/
+│   └── libs.versions.toml
+├── screenshots/                                      # ← Add your 6 screenshots here
+├── build.gradle.kts
+├── settings.gradle.kts
+└── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## ✅ Prerequisites
 
-### Prerequisites
-- Android Studio **Hedgehog (2023.1.1)** or later
-- JDK 17+
-- An active **Firebase project** (see setup below)
-- Android device or emulator running **API 24+**
+Before you begin, ensure you have the following installed:
 
-### 1. Clone the Repository
+| Tool | Minimum Version | Download |
+|---|---|---|
+| Android Studio | Hedgehog (2023.1.1) | [Download](https://developer.android.com/studio) |
+| JDK | 17 | Bundled with Android Studio |
+| Android SDK | API 24 (min) / API 34 (target) | Via SDK Manager |
+| Kotlin | 1.9.x | Bundled with Android Studio |
+| Gradle | 8.2+ | Auto-downloaded via wrapper |
+| Git | Latest | [Download](https://git-scm.com) |
 
-```bash
-git clone https://github.com/saniyatalikoti/namm_mistri_saniyatalikoti.git
-cd namm_mistri_saniyatalikoti
-```
-
-### 2. Firebase Setup
-
-1. Go to the [Firebase Console](https://console.firebase.google.com/) and create a new project (or use an existing one).
-2. Add an **Android app** with package name `com.karthik.nammakelsa`.
-3. Download the `google-services.json` file.
-4. Place it in the `app/` directory:
-   ```
-   app/google-services.json
-   ```
-5. In the Firebase Console, enable the following services:
-   - **Authentication** → Email/Password sign-in method
-   - **Firestore Database** → Start in test mode (then apply rules below)
-   - **Storage** → For profile photo uploads
-
-### 3. Firestore Security Rules (Recommended)
-
-```js
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-
-    // Workers collection — anyone authenticated can read; only owner can write
-    match /workers/{workerId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null && request.auth.uid == resource.data.userId;
-      allow create: if request.auth != null;
-    }
-
-    // Users collection — owner read/write only
-    match /users/{userId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-
-    // Requests — authenticated users can read/write their own
-    match /requests/{requestId} {
-      allow read, write: if request.auth != null;
-    }
-
-    // Messages — authenticated users only
-    match /messages/{messageId} {
-      allow read, write: if request.auth != null;
-    }
-  }
-}
-```
-
-### 4. Build & Run
-
-Open the project in Android Studio, let Gradle sync complete, then click **Run ▶** or use:
-
-```bash
-./gradlew assembleDebug
-```
+> **No Firebase account or internet connection needed** — NammaMistri is fully offline and requires no backend services.
 
 ---
 
 ## 📦 Dependencies
 
+All versions are managed centrally in `gradle/libs.versions.toml`.
+
+### Core Android
+```toml
+[versions]
+kotlin            = "1.9.22"
+agp               = "8.2.2"
+core-ktx          = "1.12.0"
+lifecycle         = "2.7.0"
+activity-compose  = "1.8.2"
+
+[libraries]
+androidx-core-ktx     = { module = "androidx.core:core-ktx",                        version.ref = "core-ktx" }
+lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx",      version.ref = "lifecycle" }
+lifecycle-viewmodel   = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+activity-compose      = { module = "androidx.activity:activity-compose",            version.ref = "activity-compose" }
+```
+
+### Jetpack Compose (BOM)
+```toml
+[versions]
+compose-bom = "2024.02.00"
+
+[libraries]
+compose-bom            = { module = "androidx.compose:compose-bom",            version.ref = "compose-bom" }
+compose-ui             = { module = "androidx.compose.ui:ui" }
+compose-ui-graphics    = { module = "androidx.compose.ui:ui-graphics" }
+compose-ui-tooling     = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-material3      = { module = "androidx.compose.material3:material3" }
+compose-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
+```
+
+### Navigation
+```toml
+[versions]
+navigation-compose = "2.7.7"
+
+[libraries]
+navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
+```
+
+### Room (Local Database)
+```toml
+[versions]
+room = "2.6.1"
+
+[libraries]
+room-runtime  = { module = "androidx.room:room-runtime",  version.ref = "room" }
+room-ktx      = { module = "androidx.room:room-ktx",      version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+```
+
+### Coroutines
+```toml
+[versions]
+coroutines = "1.7.3"
+
+[libraries]
+coroutines-core    = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core",    version.ref = "coroutines" }
+coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+```
+
+### `app/build.gradle.kts` — Dependencies Block
 ```kotlin
-// Firebase BOM — consistent versioning across all Firebase libraries
-implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
-implementation("com.google.firebase:firebase-auth-ktx")
-implementation("com.google.firebase:firebase-firestore-ktx")
-implementation("com.google.firebase:firebase-storage-ktx")
+dependencies {
+    // Core
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.activity.compose)
 
-// Image loading
-implementation("io.coil-kt:coil-compose:2.6.0")
+    // Compose BOM
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.icons.extended)
 
-// Material Icons (full icon set)
-implementation("androidx.compose.material:material-icons-extended")
+    // Navigation
+    implementation(libs.navigation.compose)
 
-// Jetpack Compose BOM
-implementation(platform(libs.androidx.compose.bom))
-implementation(libs.androidx.activity.compose)
-implementation(libs.androidx.compose.material3)
-implementation(libs.androidx.compose.ui)
-implementation(libs.androidx.compose.ui.graphics)
-implementation(libs.androidx.compose.ui.tooling.preview)
+    // Room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)              // or kapt if not using KSP
 
-// Core
-implementation(libs.androidx.core.ktx)
-implementation(libs.androidx.lifecycle.runtime.ktx)
+    // Coroutines
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+
+    // Testing
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+}
 ```
 
 ---
 
-## 🔄 App Flow
+## ⚙️ Installation & Setup
+
+### Step 1 — Clone the Repository
+```bash
+git clone https://github.com/saniyatalikoti/namm_mistri_saniyatalikoti.git
+cd namm_mistri_saniyatalikoti
+```
+
+### Step 2 — Open in Android Studio
+1. Launch **Android Studio**
+2. Select **File → Open** and choose the project folder
+3. Wait for the IDE to index the project and Gradle to sync
+
+### Step 3 — Sync Gradle
+Click **"Sync Now"** in the notification bar, or run:
+```bash
+./gradlew build
+```
+
+### Step 4 — Run the App
+- Connect a physical Android device (API 24+) via USB with Developer Options enabled, **or**
+- Start an Android Virtual Device (AVD) from **Device Manager → Create Device**
+- Press **Run ▶** (Shift + F10)
+
+> No internet connection or backend setup needed — the app is entirely offline.
+
+---
+
+## 🗄️ Database Schema
+
+NammaMistri uses **Room (SQLite)** for all local persistence. Below is the complete entity schema.
+
+> All tables use `projectId` as a foreign key so deleting a project cascades to all its workers, materials, expenses, and photos automatically.
+
+---
+
+### `projects` table
 
 ```
-App Launch
-    │
-    ▼
-RoleSelectionActivity
-    │
-    ├──► [New User]  MainActivity (Register with Email/Password)
-    │
-    └──► [Existing User] MainActivity (Sign In)
-              │
-              ▼
-         HomeActivity (Bottom Navigation)
-              │
-    ┌─────────┴──────────┐
-    │                    │
-    ▼                    ▼
- WORKER ROLE          HIRER ROLE
- ────────────         ───────────
- Home (Dashboard)     Home (Browse Workers)
- Requests (Incoming)  Requests (Sent + Status)
- Saved                Saved
- Chat List            Chat List
- Profile              Profile
+projects
+├── id            INTEGER  PRIMARY KEY AUTOINCREMENT
+├── name          TEXT     NOT NULL
+├── totalDays     INTEGER  NOT NULL
+├── completedDays INTEGER  DEFAULT 0
+└── createdAt     TEXT     NOT NULL     -- ISO-8601 date string
 ```
 
 ---
 
-## 🗂️ Firestore Data Model
+### `workers` table
 
-### `workers` collection
-| Field | Type | Description |
-|---|---|---|
-| `userId` | String | Firebase Auth UID |
-| `name` | String | Worker's full name |
-| `skill` | String | Primary skill |
-| `skillsList` | List | All skills with individual rates |
-| `location` | String | City / area |
-| `chargePerDay` | String | Daily rate in ₹ |
-| `phoneNumber` | String | Contact number |
-| `whatsappNumber` | String | WhatsApp number |
-| `imageUrl` | String | Profile photo URL |
-| `availability` | String | `Available` / `Busy` / `Offline` |
+```
+workers
+├── id         INTEGER  PRIMARY KEY AUTOINCREMENT
+├── projectId  INTEGER  NOT NULL  REFERENCES projects(id) ON DELETE CASCADE
+├── name       TEXT     NOT NULL
+├── wage       REAL     NOT NULL  -- daily wage in ₹
+├── advance    REAL     DEFAULT 0 -- advance paid in ₹
+└── daysWorked INTEGER  DEFAULT 0
+```
 
-### `requests` collection
-| Field | Type | Description |
-|---|---|---|
-| `workerId` | String | Target worker's UID |
-| `hirerId` | String | Requesting hirer's UID |
-| `hirerName` | String | Hirer's display name |
-| `status` | String | `Pending` / `Accepted` / `Declined` |
-| `timestamp` | Long | Unix timestamp |
+**Computed field (ViewModel, not stored):**
+```
+labourCost = (wage × daysWorked) - advance
+```
 
-### `messages` collection
-| Field | Type | Description |
-|---|---|---|
-| `senderId` | String | Sender's UID |
-| `receiverId` | String | Receiver's UID |
-| `text` | String | Message content |
-| `timestamp` | Long | Unix timestamp |
+---
+
+### `materials` table
+
+```
+materials
+├── id             INTEGER  PRIMARY KEY AUTOINCREMENT
+├── projectId      INTEGER  NOT NULL  REFERENCES projects(id) ON DELETE CASCADE
+├── wallLength     REAL     NOT NULL  -- feet
+├── wallHeight     REAL     NOT NULL  -- feet
+├── wallThickness  REAL     NOT NULL  -- inches
+├── brickRate      REAL     NOT NULL  -- ₹ per brick
+├── cementRate     REAL     NOT NULL  -- ₹ per bag
+└── sandRate       REAL     NOT NULL  -- ₹ per load
+```
+
+**Calculated outputs (ViewModel):**
+```
+wallVolume   = length × height × (thickness ÷ 12)     -- cubic feet
+bricksNeeded = wallVolume × 13.5                       -- standard estimation
+cementBags   = wallVolume ÷ 10
+sandLoads    = wallVolume ÷ 400
+materialCost = (bricks × brickRate) + (cement × cementRate) + (sand × sandRate)
+```
+
+---
+
+### `expenses` table
+
+```
+expenses
+├── id        INTEGER  PRIMARY KEY AUTOINCREMENT
+├── projectId INTEGER  NOT NULL  REFERENCES projects(id) ON DELETE CASCADE
+├── title     TEXT     NOT NULL
+└── amount    REAL     NOT NULL
+```
+
+---
+
+### `photos` table
+
+```
+photos
+├── id        INTEGER  PRIMARY KEY AUTOINCREMENT
+├── projectId INTEGER  NOT NULL  REFERENCES projects(id) ON DELETE CASCADE
+└── photoUri  TEXT     NOT NULL  -- local content URI from Android photo picker
+```
+
+---
+
+### Summary Computation
+
+All summary figures are computed live in `SummaryViewModel` by querying across tables:
+
+```kotlin
+val totalWorkers  = workers.size
+val labourCost    = workers.sumOf { (it.wage * it.daysWorked) - it.advance }
+val totalExpenses = expenses.sumOf { it.amount }
+val finalTotal    = labourCost + totalExpenses
+val progressPct   = (project.completedDays.toFloat() / project.totalDays) * 100f
+```
+
+---
+
+## 📈 Future Enhancements
+
+| Feature | Description |
+|---|---|
+| 🔔 Daily Reminders | Local notifications to update days worked each evening |
+| 📤 Export to PDF | Generate shareable project reports as PDFs |
+| 📍 Site Location | Attach GPS coordinates or an address to each project |
+| 📊 Charts & Analytics | Visual expense breakdown and labour cost trends |
+| ☁️ Cloud Backup | Optional Firebase sync for cross-device access |
+| 🔒 PIN / Biometric Lock | Protect sensitive financial data with app-level security |
+| 🌐 More Languages | Telugu, Tamil, and Hindi localisation |
+| 🖼️ Photo Gallery View | Full-screen swipeable image viewer for site photos |
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here's how to get started:
+Contributions are welcome and appreciated!
 
 1. **Fork** the repository
-2. **Create** a feature branch: `git checkout -b feature/your-feature-name`
-3. **Commit** your changes with clear messages: `git commit -m "feat: add worker rating system"`
-4. **Push** to your fork: `git push origin feature/your-feature-name`
-5. **Open a Pull Request** with a description of your changes
+2. **Create** a feature branch
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Commit** your changes with a descriptive message
+   ```bash
+   git commit -m "feat: add PDF export for project summary"
+   ```
+4. **Push** to your branch
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. **Open** a Pull Request against `main`
 
-### Commit Message Convention
-```
-feat:     New feature
-fix:      Bug fix
-ui:       UI / styling change
-refactor: Code improvement without feature change
-docs:     Documentation update
-chore:    Build, config, dependency updates
-```
-
----
-
-## 🐛 Known Issues & Roadmap
-
-- [ ] Push notifications for new hire requests and chat messages
-- [ ] Worker ratings and reviews system
-- [ ] Location-based filtering using GPS
-- [ ] OTP / phone number authentication
-- [ ] Hindi and Kannada language support
-- [ ] Offline mode with cached worker profiles
-- [ ] Admin dashboard for moderation
+Please follow Kotlin coding conventions and Jetpack Compose best practices. Include a brief description of your changes in the PR.
 
 ---
+
+## 📄 License
+
+This project is developed for educational and learning purposes. All rights reserved by the author.
 
 ---
 
@@ -359,18 +543,17 @@ chore:    Build, config, dependency updates
 
 <div align="center">
 
-**Saniya Talikoti**
+### Saniya Talikoti
+**BE in Computer Science Engineering**
+
+Android Developer · Kotlin Learner · Construction Tech Enthusiast
 
 [![GitHub](https://img.shields.io/badge/GitHub-saniyatalikoti-181717?style=for-the-badge&logo=github)](https://github.com/saniyatalikoti)
-
-*Built with ❤️ for the workers of Karnataka*
 
 </div>
 
 ---
 
 <div align="center">
-
-⭐ **If this project helped you, please give it a star!** ⭐
-
+  <sub>If you found this project helpful, please consider giving it a ⭐ on GitHub!</sub>
 </div>
