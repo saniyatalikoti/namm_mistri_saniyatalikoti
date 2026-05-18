@@ -512,19 +512,9 @@ fun computeSummary(
 
 <table>
   <tr>
-    <td align="center"><b>Home</b></td>
-    <td align="center"><b>Projects</b></td>
-    <td align="center"><b>Workers</b></td>
-  </tr>
-  <tr>
     <td><img src="https://github.com/user-attachments/assets/eb9806a9-e103-4895-8c1b-36cbecc9969c" width="220"/></td>
     <td><img src="https://github.com/user-attachments/assets/93eae877-fbc3-4ae4-9b5c-a7562cbcb8f3" width="220"/></td>
     <td><img src="https://github.com/user-attachments/assets/fbd2f5e3-c3e0-4129-b8f7-f96584de6302" width="220"/></td>
-  </tr>
-  <tr>
-    <td align="center"><b>Materials</b></td>
-    <td align="center"><b>Expenses</b></td>
-    <td align="center"><b>Summary</b></td>
   </tr>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/ad52d7d4-3a30-4f55-9674-42f576116b92" width="220"/></td>
